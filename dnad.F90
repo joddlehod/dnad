@@ -230,158 +230,158 @@ module dnadmod
 !------------------------------------------------
 ! Interfaces for intrinsic functions overloading
 !------------------------------------------------
-   public abs
-   interface abs
-       module procedure abs_d  ! obtain the absolute value of a dual number, elemental
-   end interface
-
-   public dabs
-   interface dabs
-       module procedure abs_d ! the same as abs, used for some old fortran commands
-   end interface
-
-   public acos
-   interface acos
-       module procedure acos_d ! obtain the arccosine of a dual number, elemental
-   end interface
-
-   public asin
-   interface asin
-       module procedure asin_d ! obtain the arcsine of a dual number, elemental
-   end interface
-
-   public atan
-   interface atan
-       module procedure atan_d ! obtain the arctan of a dual number, elemental
-   end interface
-
-   public atan2
-   interface atan2
-       module procedure atan2_d ! obtain the arctan of a dual number, elemental
-   end interface
-
-   public cos
-   interface cos
-       module procedure cos_d ! obtain the cosine of a dual number, elemental
-   end interface
-
-   public dcos
-   interface dcos
-       module procedure cos_d ! obtain the cosine of a dual number, elemental
-   end interface
-
-   public dot_product
-   interface dot_product
-       module procedure dot_product_dd ! dot product two dual number vectors
-   end interface
-
-   public exp
-   interface exp
-       module procedure exp_d ! obtain the exponential of a dual number, elemental
-   end interface
-
-   public int
-   interface int
-       module procedure int_d ! obtain the integer part of a dual number, elemental
-   end interface
-
-   public log
-   interface log
-       module procedure log_d ! obtain the log of a dual number, elemental
-   end interface
-
-   public log10
-   interface log10
-       module procedure log10_d ! obtain the log of a dual number, elemental
-   end interface
-
-   public matmul
-   interface matmul
-       module procedure matmul_dd ! matrix multiplies of two dual matrices
-       module procedure matmul_dv ! matrix multiplies of a dual matrix with a dual vector
-       module procedure matmul_vd ! matrix multiplies of a dual vector with a dual matrix
-   end interface
-
-
-   public max
-   interface max
-       module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
-       module procedure max_di ! obtain the max of from a dual number and an integer, elemental
-       module procedure max_dr ! obtain the max of from a dual number and a real, elemental
-       module procedure max_rd ! obtain the max of from a real,and a dual number,  elemental
-   end interface
-
-   public dmax1
-   interface dmax1
-       module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
-   end interface
-
-   public maxval
-   interface maxval
-       module procedure maxval_d ! obtain the maxval  of a dual number vectgor
-   end interface
-
-   public min
-   interface min
-       module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
-       module procedure min_dr ! obtain the min of a dual and a real, elemental
-   end interface
-
-   public dmin1
-   interface dmin1
-       module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
-   end interface
-
-   public minval
-   interface minval
-       module procedure minval_d ! obtain the maxval  of a dual number vectgor
-   end interface
-
-   public nint
-   interface nint
-       module procedure nint_d ! returns the nearest integer to the argument, elemental
-   end interface
-
-   public sign
-   interface  sign
-     module procedure  sign_dd ! sign(a,b) with two dual numbers, elemental
-     module procedure  sign_rd ! sign(a,b) with a real and a dual, elemental
-   end interface
-
-   public sin
-   interface sin
-       module procedure sin_d ! obtain sine of a dual number, elemental
-   end interface
-
-   public dsin
-   interface dsin
-       module procedure sin_d ! obtain sine of a dual number, elemental
-   end interface
-
-   public tan
-   interface tan
-       module procedure tan_d ! obtain sine of a dual number, elemental
-   end interface
-
-   public dtan
-   interface dtan
-       module procedure tan_d ! obtain sine of a dual number, elemental
-   end interface
-
-   public sqrt
-   interface sqrt
-       module procedure sqrt_d ! obtain the sqrt of a dual number, elemental
-   end interface
-
-   public sum
-   interface sum
-       module procedure sum_d ! sum a dual array
-   end interface
-
-   public maxloc
-   interface maxloc
-       module procedure maxloc_d ! location of max in a dual array
-   end interface
+    public abs
+    interface abs
+        module procedure abs_d  ! obtain the absolute value of a dual number, elemental
+    end interface
+    
+    public dabs
+    interface dabs
+        module procedure abs_d ! the same as abs, used for some old fortran commands
+    end interface
+    
+    public acos
+    interface acos
+        module procedure acos_d ! obtain the arccosine of a dual number, elemental
+    end interface
+    
+    public asin
+    interface asin
+        module procedure asin_d ! obtain the arcsine of a dual number, elemental
+    end interface
+    
+    public atan
+    interface atan
+        module procedure atan_d ! obtain the arctan of a dual number, elemental
+    end interface
+    
+    public atan2
+    interface atan2
+        module procedure atan2_d ! obtain the arctan of a dual number, elemental
+    end interface
+    
+    public cos
+    interface cos
+        module procedure cos_d ! obtain the cosine of a dual number, elemental
+    end interface
+    
+    public dcos
+    interface dcos
+        module procedure cos_d ! obtain the cosine of a dual number, elemental
+    end interface
+    
+    public dot_product
+    interface dot_product
+        module procedure dot_product_dd ! dot product two dual number vectors
+    end interface
+    
+    public exp
+    interface exp
+        module procedure exp_d ! obtain the exponential of a dual number, elemental
+    end interface
+    
+    public int
+    interface int
+        module procedure int_d ! obtain the integer part of a dual number, elemental
+    end interface
+    
+    public log
+    interface log
+        module procedure log_d ! obtain the log of a dual number, elemental
+    end interface
+    
+    public log10
+    interface log10
+        module procedure log10_d ! obtain the log of a dual number, elemental
+    end interface
+    
+    public matmul
+    interface matmul
+        module procedure matmul_dd ! matrix multiplies of two dual matrices
+        module procedure matmul_dv ! matrix multiplies of a dual matrix with a dual vector
+        module procedure matmul_vd ! matrix multiplies of a dual vector with a dual matrix
+    end interface
+    
+    
+    public max
+    interface max
+        module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
+        module procedure max_di ! obtain the max of from a dual number and an integer, elemental
+        module procedure max_dr ! obtain the max of from a dual number and a real, elemental
+        module procedure max_rd ! obtain the max of from a real,and a dual number,  elemental
+    end interface
+    
+    public dmax1
+    interface dmax1
+        module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
+    end interface
+    
+    public maxval
+    interface maxval
+        module procedure maxval_d ! obtain the maxval  of a dual number vectgor
+    end interface
+    
+    public min
+    interface min
+        module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
+        module procedure min_dr ! obtain the min of a dual and a real, elemental
+    end interface
+    
+    public dmin1
+    interface dmin1
+        module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
+    end interface
+    
+    public minval
+    interface minval
+        module procedure minval_d ! obtain the maxval  of a dual number vectgor
+    end interface
+    
+    public nint
+    interface nint
+        module procedure nint_d ! returns the nearest integer to the argument, elemental
+    end interface
+    
+    public sign
+    interface  sign
+      module procedure  sign_dd ! sign(a,b) with two dual numbers, elemental
+      module procedure  sign_rd ! sign(a,b) with a real and a dual, elemental
+    end interface
+    
+    public sin
+    interface sin
+        module procedure sin_d ! obtain sine of a dual number, elemental
+    end interface
+    
+    public dsin
+    interface dsin
+        module procedure sin_d ! obtain sine of a dual number, elemental
+    end interface
+    
+    public tan
+    interface tan
+        module procedure tan_d ! obtain sine of a dual number, elemental
+    end interface
+    
+    public dtan
+    interface dtan
+        module procedure tan_d ! obtain sine of a dual number, elemental
+    end interface
+    
+    public sqrt
+    interface sqrt
+        module procedure sqrt_d ! obtain the sqrt of a dual number, elemental
+    end interface
+    
+    public sum
+    interface sum
+        module procedure sum_d ! sum a dual array
+    end interface
+    
+    public maxloc
+    interface maxloc
+        module procedure maxloc_d ! location of max in a dual array
+    end interface
 
 contains
 
