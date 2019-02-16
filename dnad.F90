@@ -167,9 +167,9 @@ module dnadmod
 
     public operator (**)
     interface operator (**)
-        module procedure pow_i ! power a dual number to an integer power,elemental
-        module procedure pow_r ! power a dual number to a real power, elemental
-        module procedure pow_d ! power a dual number to a dual power, elemental
+        module procedure pow_i ! dual number to an integer power,elemental
+        module procedure pow_r ! dual number to a real power, elemental
+        module procedure pow_d ! dual number to a dual power, elemental
     end interface
 
     public operator (==)
@@ -177,7 +177,7 @@ module dnadmod
         module procedure eq_dd ! compare two dual numbers, elemental
         module procedure eq_di ! compare a dual and an integer, elemental
         module procedure eq_dr ! compare a dual and a real, elemental
-        module procedure eq_id ! compare an integer with a dual number, elemental
+        module procedure eq_id ! compare integer with a dual number, elemental
         module procedure eq_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -186,7 +186,7 @@ module dnadmod
         module procedure le_dd  ! compare two dual numbers, elemental
         module procedure le_di  ! compare a dual and an integer, elemental
         module procedure le_dr  ! compare a dual and a real,elemental
-        module procedure le_id ! compare an integer with a dual number, elemental
+        module procedure le_id ! compare integer with a dual number, elemental
         module procedure le_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -195,7 +195,7 @@ module dnadmod
         module procedure lt_dd  !compare two dual numbers, elemental
         module procedure lt_di  !compare a dual and an integer, elemental
         module procedure lt_dr  !compare dual with a real, elemental
-        module procedure lt_id ! compare an integer with a dual number, elemental
+        module procedure lt_id ! compare integer with a dual number, elemental
         module procedure lt_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -203,8 +203,8 @@ module dnadmod
     interface operator (>=)
         module procedure ge_dd ! compare two dual numbers, elemental
         module procedure ge_di ! compare dual with integer, elemental
-        module procedure ge_dr ! compare a dual number with a real number, elemental
-        module procedure ge_id ! compare an integer with a dual number, elemental
+        module procedure ge_dr ! compare dual with a real number, elemental
+        module procedure ge_id ! compare integer with a dual number, elemental
         module procedure ge_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -213,7 +213,7 @@ module dnadmod
         module procedure gt_dd  !compare two dual numbers, elemental
         module procedure gt_di  !compare a dual and an integer, elemental
         module procedure gt_dr  !compare dual with a real, elemental
-        module procedure gt_id ! compare an integer with a dual number, elemental
+        module procedure gt_id ! compare integer with a dual number, elemental
         module procedure gt_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -222,7 +222,7 @@ module dnadmod
         module procedure ne_dd  !compare two dual numbers, elemental
         module procedure ne_di  !compare a dual and an integer, elemental
         module procedure ne_dr  !compare dual with a real, elemental
-        module procedure ne_id ! compare an integer with a dual number, elemental
+        module procedure ne_id ! compare integer with a dual number, elemental
         module procedure ne_rd ! compare a real with a dual number, elemental
     end interface
 
@@ -232,42 +232,42 @@ module dnadmod
 !------------------------------------------------
     public abs
     interface abs
-        module procedure abs_d  ! obtain the absolute value of a dual number, elemental
+        module procedure abs_d  ! absolute value of a dual number, elemental
     end interface
     
     public dabs
     interface dabs
-        module procedure abs_d ! the same as abs, used for some old fortran commands
+        module procedure abs_d ! same as abs, used for some old fortran commands
     end interface
     
     public acos
     interface acos
-        module procedure acos_d ! obtain the arccosine of a dual number, elemental
+        module procedure acos_d ! arccosine of a dual number, elemental
     end interface
     
     public asin
     interface asin
-        module procedure asin_d ! obtain the arcsine of a dual number, elemental
+        module procedure asin_d ! arcsine of a dual number, elemental
     end interface
     
     public atan
     interface atan
-        module procedure atan_d ! obtain the arctan of a dual number, elemental
+        module procedure atan_d ! arctan of a dual number, elemental
     end interface
     
     public atan2
     interface atan2
-        module procedure atan2_d ! obtain the arctan of a dual number, elemental
+        module procedure atan2_d ! arctan of a dual number, elemental
     end interface
     
     public cos
     interface cos
-        module procedure cos_d ! obtain the cosine of a dual number, elemental
+        module procedure cos_d ! cosine of a dual number, elemental
     end interface
     
     public dcos
     interface dcos
-        module procedure cos_d ! obtain the cosine of a dual number, elemental
+        module procedure cos_d ! cosine of a dual number, elemental
     end interface
     
     public dot_product
@@ -277,59 +277,59 @@ module dnadmod
     
     public exp
     interface exp
-        module procedure exp_d ! obtain the exponential of a dual number, elemental
+        module procedure exp_d ! exponential of a dual number, elemental
     end interface
     
     public int
     interface int
-        module procedure int_d ! obtain the integer part of a dual number, elemental
+        module procedure int_d ! integer part of a dual number, elemental
     end interface
     
     public log
     interface log
-        module procedure log_d ! obtain the log of a dual number, elemental
+        module procedure log_d ! log of a dual number, elemental
     end interface
     
     public log10
     interface log10
-        module procedure log10_d ! obtain the log of a dual number, elemental
+        module procedure log10_d ! log of a dual number, elemental
     end interface
     
     public matmul
     interface matmul
-        module procedure matmul_dd ! matrix multiplies of two dual matrices
-        module procedure matmul_dv ! matrix multiplies of a dual matrix with a dual vector
-        module procedure matmul_vd ! matrix multiplies of a dual vector with a dual matrix
+        module procedure matmul_dd ! multiply two dual matrices
+        module procedure matmul_dv ! multiply a dual matrix with a dual vector
+        module procedure matmul_vd ! multiply a dual vector with a dual matrix
     end interface
     
     
     public max
     interface max
-        module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
-        module procedure max_di ! obtain the max of from a dual number and an integer, elemental
-        module procedure max_dr ! obtain the max of from a dual number and a real, elemental
-        module procedure max_rd ! obtain the max of from a real,and a dual number,  elemental
+        module procedure max_dd ! max of from two to four dual numbers, elemental
+        module procedure max_di ! max of a dual number and an integer, elemental
+        module procedure max_dr ! max of a dual number and a real, elemental
+        module procedure max_rd ! max of a real,and a dual number,  elemental
     end interface
     
     public dmax1
     interface dmax1
-        module procedure max_dd ! obtain the max of from two to four dual numbers, elemental
+        module procedure max_dd ! max of from two to four dual numbers, elemental
     end interface
     
     public maxval
     interface maxval
-        module procedure maxval_d ! obtain the maxval  of a dual number vectgor
+        module procedure maxval_d ! maxval of a dual number vector
     end interface
     
     public min
     interface min
-        module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
-        module procedure min_dr ! obtain the min of a dual and a real, elemental
+        module procedure min_dd ! min of from two to four dual numbers, elemental
+        module procedure min_dr ! min of a dual and a real, elemental
     end interface
     
     public dmin1
     interface dmin1
-        module procedure min_dd ! obtain the min of from two to four dual numbers, elemental
+        module procedure min_dd ! min of from two to four dual numbers, elemental
     end interface
     
     public minval
@@ -339,7 +339,7 @@ module dnadmod
     
     public nint
     interface nint
-        module procedure nint_d ! returns the nearest integer to the argument, elemental
+        module procedure nint_d ! nearest integer to the argument, elemental
     end interface
     
     public sign
@@ -1362,7 +1362,8 @@ contains
 
     !-----------------------------------------
     ! ATAN2 of dual numbers
-    ! <res, dres> = atan2(<u, du>, <v, dv>) = <atan2(u, v), v / (u^2 + v^2) * du - u / (u^2 + v^2) * dv>
+    ! <res, dres> = atan2(<u, du>, <v, dv>)
+    !             = <atan2(u, v), v / (u^2 + v^2) * du - u / (u^2 + v^2) * dv>
     !----------------------------------------
     elemental function atan2_d(u, v) result(res)
         type(dual), intent(in) :: u, v
