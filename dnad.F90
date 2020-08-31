@@ -234,75 +234,75 @@ module dnadmod
     interface abs
         module procedure abs_d  ! absolute value of a dual number, elemental
     end interface
-    
+
     public dabs
     interface dabs
         module procedure abs_d ! same as abs, used for some old fortran commands
     end interface
-    
+
     public acos
     interface acos
         module procedure acos_d ! arccosine of a dual number, elemental
     end interface
-    
+
     public asin
     interface asin
         module procedure asin_d ! arcsine of a dual number, elemental
     end interface
-    
+
     public atan
     interface atan
         module procedure atan_d ! arctan of a dual number, elemental
     end interface
-    
+
     public atan2
     interface atan2
         module procedure atan2_d ! arctan of a dual number, elemental
     end interface
-    
+
     public cos
     interface cos
         module procedure cos_d ! cosine of a dual number, elemental
     end interface
-    
+
     public dcos
     interface dcos
         module procedure cos_d ! cosine of a dual number, elemental
     end interface
-    
+
     public dot_product
     interface dot_product
         module procedure dot_product_dd ! dot product two dual number vectors
     end interface
-    
+
     public exp
     interface exp
         module procedure exp_d ! exponential of a dual number, elemental
     end interface
-    
+
     public int
     interface int
         module procedure int_d ! integer part of a dual number, elemental
     end interface
-    
+
     public log
     interface log
         module procedure log_d ! log of a dual number, elemental
     end interface
-    
+
     public log10
     interface log10
         module procedure log10_d ! log of a dual number, elemental
     end interface
-    
+
     public matmul
     interface matmul
         module procedure matmul_dd ! multiply two dual matrices
         module procedure matmul_dv ! multiply a dual matrix with a dual vector
         module procedure matmul_vd ! multiply a dual vector with a dual matrix
     end interface
-    
-    
+
+
     public max
     interface max
         module procedure max_dd ! max of from two to four dual numbers, elemental
@@ -310,77 +310,107 @@ module dnadmod
         module procedure max_dr ! max of a dual number and a real, elemental
         module procedure max_rd ! max of a real,and a dual number,  elemental
     end interface
-    
+
     public dmax1
     interface dmax1
         module procedure max_dd ! max of from two to four dual numbers, elemental
     end interface
-    
+
     public maxval
     interface maxval
         module procedure maxval_d ! maxval of a dual number vector
     end interface
-    
+
     public min
     interface min
         module procedure min_dd ! min of from two to four dual numbers, elemental
         module procedure min_dr ! min of a dual and a real, elemental
     end interface
-    
+
     public dmin1
     interface dmin1
         module procedure min_dd ! min of from two to four dual numbers, elemental
     end interface
-    
+
     public minval
     interface minval
         module procedure minval_d ! obtain the maxval  of a dual number vectgor
     end interface
-    
+
     public nint
     interface nint
         module procedure nint_d ! nearest integer to the argument, elemental
     end interface
-    
+
     public sign
     interface  sign
       module procedure  sign_dd ! sign(a,b) with two dual numbers, elemental
       module procedure  sign_rd ! sign(a,b) with a real and a dual, elemental
     end interface
-    
+
     public sin
     interface sin
         module procedure sin_d ! obtain sine of a dual number, elemental
     end interface
-    
+
     public dsin
     interface dsin
         module procedure sin_d ! obtain sine of a dual number, elemental
     end interface
-    
+
     public tan
     interface tan
         module procedure tan_d ! obtain sine of a dual number, elemental
     end interface
-    
+
     public dtan
     interface dtan
         module procedure tan_d ! obtain sine of a dual number, elemental
     end interface
-    
+
     public sqrt
     interface sqrt
         module procedure sqrt_d ! obtain the sqrt of a dual number, elemental
     end interface
-    
+
     public sum
     interface sum
         module procedure sum_d ! sum a dual array
     end interface
-    
+
     public maxloc
     interface maxloc
         module procedure maxloc_d ! location of max in a dual array
+    end interface
+
+    public sinh
+    interface sinh
+        module procedure sinh_d ! obtain sinh of a dual number, elemental
+    end interface
+
+    public cosh
+    interface cosh
+        module procedure cosh_d ! obtain cosh of a dual number, elemental
+    end interface
+
+    public tanh
+    interface tanh
+        module procedure tanh_d ! obtain tanh of a dual number, elemental
+    end interface
+
+    public asinh
+    interface asinh
+        module procedure asinh_d ! obtain asinh of a dual number, elemental
+    end interface
+
+    public acosh
+    interface acosh
+        module procedure acosh_d ! obtain acosh of a dual number, elemental
+    end interface
+
+    public atanh
+    interface atanh
+        module procedure atanh_d ! obtain atanh of a dual number, elemental
     end interface
 
 contains
@@ -571,7 +601,7 @@ contains
 
     end function minus_di
 
-    
+
     !-------------------------------------------------
     ! dual - double
     ! <res, dres> = <u, du> - r = <u - r, du>
@@ -1677,7 +1707,7 @@ contains
 
     end function minval_d
 
-    
+
     !------------------------------------------------------
     !Returns the nearest integer to u%x, ELEMENTAL
     !------------------------------------------------------
@@ -1814,5 +1844,97 @@ contains
         res = sqrt(negative_one)
 
     end function set_NaN
+
+
+    !-----------------------------------------
+    ! Hyperbolic functions: sinh, cosh, tanh
+    ! and their inverses: asinh, acosh, atanh
+    !-----------------------------------------
+    !-----------------------------------------
+    ! SINH OF dual numbers
+    ! <res, dres> = sinh(<u, du>) = <sinh(u), cosh(u) * du>
+    !-----------------------------------------
+    elemental function sinh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = sinh(u%x)
+        res%dx = u%dx * cosh(u%x)
+
+    end function sinh_d
+
+    !-----------------------------------------
+    ! COSH OF dual numbers
+    ! <res, dres> = cosh(<u, du>) = <cosh(u), sinh(u) * du>
+    !-----------------------------------------
+    elemental function cosh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = cosh(u%x)
+        res%dx = u%dx * sinh(u%x)
+
+    end function cosh_d
+
+    !-----------------------------------------
+    ! TANH OF dual numbers
+    ! <res, dres> = tanh(<u, du>) = <tanh(u), 1.0/cosh(u)**2 * du>
+    !-----------------------------------------
+    elemental function tanh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = tanh(u%x)
+        res%dx = u%dx * 1.0/cosh(u%x)**2
+
+    end function tanh_d
+
+    !-----------------------------------------
+    ! ASINH OF dual numbers
+    ! <res, dres> = asinh(<u, du>) = <asinh(u), 1/sqrt(u**2 + 1) * du>
+    !-----------------------------------------
+    elemental function asinh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = asinh(u%x)
+        res%dx = u%dx * 1.0/sqrt(u%x**2 + 1.0)
+
+    end function asinh_d
+
+    !-----------------------------------------
+    ! ACOSH OF dual numbers
+    ! <res, dres> = acosh(<u, du>) = <acosh(u), 1/sqrt(u**2 - 1) * du>
+    !-----------------------------------------
+    elemental function acosh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = acosh(u%x)
+        if (abs(u%x) <= 1.0) then
+            res%dx = set_Nan()  ! Undefined derivative
+        else
+            res%dx = u%dx * 1.0/sqrt(u%x**2 - 1.0)
+        end if
+
+    end function acosh_d
+
+    !-----------------------------------------
+    ! ATAHN OF dual numbers
+    ! <res, dres> = atanh(<u, du>) = <atanh(u), 1/(1 - u**2) * du>
+    !-----------------------------------------
+    elemental function atanh_d(u) result(res)
+        type(dual), intent(in) :: u
+        type(dual) :: res
+
+        res%x = atanh(u%x)
+        if (abs(u%x) == 1.0) then
+            res%dx = set_Nan()  ! Undefined derivative
+        else
+            res%dx = u%dx * 1.0/(1.0 - u%x**2)
+        end if
+
+    end function atanh_d
+
 
 end module dnadmod
