@@ -1911,7 +1911,7 @@ contains
         type(dual) :: res
 
         res%x = acosh(u%x)
-        if (abs(u%x) <= 1.0) then
+        if (u%x <= 1.0) then
             res%dx = set_Nan()  ! Undefined derivative
         else
             res%dx = u%dx * 1.0/sqrt(u%x**2 - 1.0)
@@ -1928,7 +1928,7 @@ contains
         type(dual) :: res
 
         res%x = atanh(u%x)
-        if (abs(u%x) == 1.0) then
+        if (abs(u%x) >= 1.0) then
             res%dx = set_Nan()  ! Undefined derivative
         else
             res%dx = u%dx * 1.0/(1.0 - u%x**2)
